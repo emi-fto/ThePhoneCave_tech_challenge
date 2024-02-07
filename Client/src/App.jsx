@@ -1,35 +1,40 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import "./Components/Footer";
+import Navbar from "./Components/Navbar";
+import HomePage from "./Pages/HomePage";
+import Footer from "./Components/Footer";
+import AboutPage from "./Pages/AboutPage";
+import DetailsPage from "./Pages/DetailsPage";
+import { Routes, Route } from "react-router-dom";
+import { AppShell, Center } from "@mantine/core";
+import ErrorPage from "./assets/404.png";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="App">
+      <AppShell>
+        <AppShell.Main>
+          <Navbar />
+          <hr />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/About" element={<AboutPage />} />
 
-export default App
+            <Route path="/phones/:phoneId" element={<DetailsPage />} />
+            <Route
+              path="*"
+              element={
+                <Center>
+                  <img className="logo" src={ErrorPage} alt="404" />
+                </Center>
+              }
+            />
+          </Routes>
+          <hr />
+          <Footer />
+        </AppShell.Main>
+      </AppShell>
+    </div>
+  );
+}
+export default App;

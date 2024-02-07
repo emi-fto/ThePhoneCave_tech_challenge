@@ -7,7 +7,7 @@ const server = jsonServer.create();
 const router = jsonServer.router("phones.json");
 
 const middlewares = jsonServer.defaults();
-const PORT = 4000;
+const PORT = process.env.PORT || 5005;
 
 server.use(middlewares);
 server.use(morgan("dev"));
