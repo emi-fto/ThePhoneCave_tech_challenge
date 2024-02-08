@@ -25,7 +25,7 @@ function App() {
               path="*"
               element={
                 <Center>
-                  <img className="logo" src={ErrorPage} alt="404" />
+                  <img className="img" src={ErrorPage} alt="404" />
                 </Center>
               }
             />
